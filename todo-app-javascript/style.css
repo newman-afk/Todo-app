@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  object-fit: contain;
+  scale: 0.8;
+  cursor: pointer;
+}
+:root {
+  /* COLORS */
+  /* PRIMARY */
+  --Bright-Blue: hsl(220, 98%, 61%);
+  --Check-Background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+  /* NEUTRAL */
+  /* LIGHT THEME */
+  --Light-Theme-Body-Background: hsl(0, 0%, 98%);
+  --Light-Theme-Block-Background: hsl(0, 0%, 100%);
+  --Light-Theme-Todo-Text-Color: hsl(0, 0%, 0%);
+
+  --Light-Theme-Body-Ba: hsl(236, 33%, 92%);
+  --Light-Theme-T: hsl(233, 11%, 84%);
+  --Light-Theme-Dark-Grayish-Blue: hsl(236, 9%, 61%);
+  --Light-Theme-Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+
+  /* DARK THEME */
+  --Dark-Theme-Body-Background: hsl(235, 21%, 11%);
+  --Dark-Theme-Block-Background: hsl(235, 24%, 19%);
+  --Dark-Theme-Todo-Text-Color: hsl(234, 39%, 85%);
+  --Dark-Theme-Todo-Text-Hover-Color: hsl(236, 33%, 92%);
+  --Dark-Theme-Dark-Grayish-Blue: hsl(234, 11%, 52%);
+  --Dark-Theme-Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+  --Dark-Theme-Very-Darkest-Grayish-Blue: hsl(237, 14%, 26%);
+}
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  font-size: 1px;
+  font-family: "Josefin Sans", sans-serif;
+}
+.dragging {
+  opacity: 0.5;
+}
+.todo-container {
+  width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.todo-warpper {
+  padding: 3rem 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.todo-warpper header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.todo-warpper header h1 {
+  font-size: 2rem;
+  color: rgb(255, 255, 255, 0.95);
+  letter-spacing: 0.6rem;
+}
+.todo-container .todo-block {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+.todo-input,
+.todo-items,
+.todo-categories {
+  border-radius: 0.5rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.todo-item-list {
+  overflow: hidden;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+}
+.todo-items-info-and-clear {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.todo-input .circle {
+  cursor: default;
+}
+.circle {
+  overflow: hidden;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border-width: 2px;
+  border-style: solid;
+  cursor: pointer;
+}
+.circle img {
+  display: none;
+}
+/* todo-input */
+.todo-input {
+  gap: 1rem;
+}
+.todo-input input {
+  background: transparent;
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  font-family: inherit;
+}
+.todo-input input::placeholder {
+  font-family: inherit;
+}
+/* todo-items */
+.todo-items {
+  margin-top: 1rem;
+  margin-bottom: 6rem;
+}
+.todo-item {
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+}
+.todo-item::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.todo-item-left {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.todo-items-info-and-clear {
+  justify-content: space-between;
+  font-weight: 700;
+  position: relative;
+}
+.todo-items-info-and-clear button {
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+.todo-item.completed .circle {
+  background: var(--Check-Background);
+}
+.todo-item.completed .circle img {
+  display: block;
+}
+.todo-item p {
+  font-weight: 700;
+}
+.todo-item.completed p {
+  text-decoration: line-through;
+}
+/* todo-categories */
+.todo-categories {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding: 1rem;
+  bottom: -4rem;
+  background-color: inherit;
+}
+.todo-categories button {
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+.todo-categories button.active {
+  color: var(--Bright-Blue) !important;
+}
+
+/* footer */
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: 700;
+}
+/*  DARK THEME */
+.todo-container.dark {
+  background-image: url(./images/bg-mobile-dark.jpg);
+  background-color: var(--Dark-Theme-Body-Background);
+}
+.todo-container.dark .todo-theme-icon .icon-sun {
+  display: block;
+}
+.todo-container.dark .todo-theme-icon .icon-moon {
+  display: none;
+}
+.todo-container.dark .todo-block {
+  background-color: var(--Dark-Theme-Block-Background);
+}
+.todo-container.dark .todo-input input {
+  color: var(--Dark-Theme-Todo-Text-Color);
+}
+.todo-container.dark .todo-input input::placeholder {
+  color: var(--Dark-Theme-Dark-Grayish-Blue);
+}
+.todo-container.dark .todo-item::after {
+  background-color: var(--Dark-Theme-Very-Darkest-Grayish-Blue);
+}
+.todo-container.dark .todo-item p {
+  color: var(--Dark-Theme-Todo-Text-Color);
+}
+.todo-container.dark .todo-item.completed p {
+  color: var(--Dark-Theme-Very-Dark-Grayish-Blue);
+}
+.todo-container.dark .circle {
+  border-color: var(--Dark-Theme-Very-Darkest-Grayish-Blue);
+}
+.todo-container.dark .todo-items-info-and-clear {
+  color: var(--Dark-Theme-Very-Dark-Grayish-Blue);
+}
+.todo-container.dark .todo-categories button {
+  color: var(--Dark-Theme-Dark-Grayish-Blue);
+}
+.todo-container.dark footer {
+  color: var(--Dark-Theme-Very-Dark-Grayish-Blue);
+}
+/* LIGHT THEME */
+.todo-container.light {
+  background-image: url(./images/bg-mobile-light.jpg);
+  background-color: var(--Light-Theme-Body-Background);
+}
+.todo-container.light .todo-theme-icon .icon-sun {
+  display: none;
+}
+.todo-container.light .todo-theme-icon .icon-moon {
+  display: block;
+}
+.todo-container.light .todo-block {
+  background-color: var(--Light-Theme-Block-Background);
+}
+.todo-container.light .todo-input input {
+  color: var(--Light-Theme-Very-Dark-Grayish-Blue);
+}
+.todo-container.light .todo-input input::placeholder {
+  color: var(--Light-Theme-T);
+}
+.todo-container.light .todo-item::after {
+  background-color: var(--Light-Theme-Body-Ba);
+}
+.todo-container.light .todo-item p {
+  color: var(--Light-Theme-Very-Dark-Grayish-Blue);
+}
+.todo-container.light .todo-item.completed p {
+  color: var(--Light-Theme-Body-Ba);
+}
+.todo-container.light .circle {
+  border-color: var(--Light-Theme-Body-Ba);
+}
+.todo-container.light .todo-items-info-and-clear {
+  color: var(--Light-Theme-T);
+}
+.todo-container.light .todo-categories button {
+  color: var(--Light-Theme-Dark-Grayish-Blue);
+}
+.todo-container.light footer {
+  color: var(--Light-Theme-T);
+}
+@media (min-width: 768px) {
+  /* THEME DARK */
+  .todo-container.dark {
+    background-image: url(./images/bg-desktop-dark.jpg);
+  }
+  .todo-container.dark .todo-item:hover p {
+    color: var(--Dark-Theme-Todo-Text-Hover-Color);
+  }
+  .todo-container.dark .todo-item:hover .circle {
+    border-color: transparent;
+    background: linear-gradient(var(--Dark-Theme-Block-Background) 0 0)
+        padding-box,
+      var(--Check-Background) border-box;
+  }
+  .todo-item.completed:hover .circle {
+    border: none;
+    background: var(--Check-Background) !important;
+  }
+  .todo-container.dark .todo-item.completed:hover p {
+    color: var(--Dark-Theme-Very-Dark-Grayish-Blue);
+  }
+
+  /* THEME LIGHT */
+  .todo-container.light {
+    background-image: url(./images/bg-desktop-light.jpg);
+  }
+  .todo-container.light .todo-item:hover .circle {
+    border-color: transparent;
+    background: linear-gradient(white 0 0) padding-box,
+      var(--Check-Background) border-box;
+  }
+
+  .todo-warpper {
+    padding-top: 5rem;
+    width: 40%;
+    min-width: 500px;
+  }
+  .todo-warpper header {
+    margin-bottom: 3rem;
+  }
+  .todo-item > img {
+    display: none;
+  }
+  .todo-item:hover > img {
+    display: block;
+  }
+  .todo-categories {
+    position: static;
+    padding: 0;
+    width: fit-content;
+    box-shadow: none;
+  }
+}

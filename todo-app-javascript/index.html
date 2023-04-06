@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <!-- styles -->
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body>
+    <div class="todo-container dark">
+      <section class="todo-warpper">
+        <header>
+          <h1>TODO</h1>
+          <div class="todo-theme-icon">
+            <img
+              class="icon-moon"
+              src="./images/icon-moon.svg"
+              alt="theme-moon"
+            />
+            <img class="icon-sun" src="./images/icon-sun.svg" alt="theme-sun" />
+          </div>
+        </header>
+        <main>
+          <div class="todo-block todo-input">
+            <div class="circle"></div>
+            <input type="text" placeholder="Create a new todo..." />
+          </div>
+
+          <div class="todo-items">
+            <div class="todo-item-list">
+              <div class="todo-block todo-item">
+                <div class="todo-item-left">
+                  <div class="circle">
+                    <img src="./images/icon-check.svg" alt="icon-check" />
+                  </div>
+
+                  <p>Create a new todo...</p>
+                </div>
+                <img src="./images/icon-cross.svg" alt="icon-cross" />
+              </div>
+              <div class="todo-block todo-item completed">
+                <div class="todo-item-left">
+                  <div class="circle">
+                    <img src="./images/icon-check.svg" alt="icon-check" />
+                  </div>
+
+                  <p>Create a new todo...</p>
+                </div>
+                <img src="./images/icon-cross.svg" alt="icon-cross" />
+              </div>
+            </div>
+
+            <div class="todo-block todo-items-info-and-clear">
+              <p><span class="left-items">5</span> items left</p>
+              <div class="todo-categories">
+                <button class="active btn-all">All</button>
+                <button class="btn-active">Active</button>
+                <button class="btn-completed">Completed</button>
+              </div>
+              <button class="clear-completed-btn">Clear Completed</button>
+            </div>
+          </div>
+        </main>
+
+        <footer>
+          <p>Drag and drap to reorder list</p>
+        </footer>
+      </section>
+    </div>
+
+    <!-- Javascript -->
+    <script src="script.js"></script>
+  </body>
+</html>
